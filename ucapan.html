@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Surat Ulang Tahun</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background: linear-gradient(135deg, #fce3ec, #d5f3f5);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      overflow: hidden;
+    }
+
+    .container {
+      text-align: center;
+      padding: 20px;
+    }
+
+    .open-button {
+      padding: 15px 30px;
+      font-size: 1.2em;
+      background-color: #ff69b4;
+      color: white;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+      transition: transform 0.2s;
+    }
+
+    .open-button:hover {
+      transform: scale(1.05);
+    }
+
+    .letter {
+      display: none;
+      max-width: 600px;
+      background: white;
+      padding: 30px;
+      border-radius: 15px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+      animation: fadeIn 1s ease forwards;
+      margin-top: 20px;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(30px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    h1 {
+      color: #ff69b4;
+      margin-bottom: 15px;
+    }
+
+    p {
+      font-size: 1.1em;
+      line-height: 1.6em;
+      color: #444;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <button class="open-button" onclick="showLetter()">Buka Surat</button>
+
+    <div class="letter" id="surat">
+      <h1>Selamat Ulang Tahun, Pendekkk 😽🎉</h1>
+      <p>
+        hari ini ulang tahun kamu ya?
+
+selamat ulang tahun buat manusia kecil
+semoga kamu nggak makin nyebelin… eh, maksudnya makin dewasa.
+walaupun aku tau kamu tetep bakal nyebelin. tapi yaudah, aku udah terlanjur jadian sama kamu.
+
+aku di sini nggak bisa kasih peluk.
+nggak bisa ngasih kue.
+yang bisa aku kasih cuma ucapan, doa, dan… perhatian yang sering terselubung kayak “ayo main”, ngirim vt padahal sebenernya artinya “aku kangen tapi gengsi ngomongnya karena belum terbiasa".
+
+jarak emang ngeselin.
+tapi kamu lebih ngeselin sih jujur aja apalagi kalo dikasih tau, batu bet kalo dikasih tau
+
+tapi ya gitu...
+aku tetep kangen kamu banget.
+
+semoga tahun ini kamu bisa tahan sama semua hal — termasuk tahan sama aku yang kadang ngeselin tapi setia.
+dan jangan sering begadang mulu, udah dikasih tau malah nyinyir sama ngeyel.
+
+dan semoga kamu nggak lupa…
+pacar kamu ini mungkin kadang slowrespon, tapi juga suka kamu. banget.
+anyway aku ada surprise juga buat kamu
+        <br><br>
+        dari aku,
+yang tingginya dikit lebih unggul 12cm<br>
+      </p>
+    </div>
+  </div>
+
+  <script>
+    function showLetter() {
+      document.querySelector('.open-button').style.display = 'none';
+      document.getElementById('surat').style.display = 'block';
+    }
+  </script>
+</body>
+</html>

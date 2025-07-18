@@ -65,6 +65,16 @@
       line-height: 1.6em;
       color: #444;
     }
+
+    #popup {
+      display: none;
+      position: fixed;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background-color: rgba(0, 0, 0, 0.6);
+      justify-content: center;
+      align-items: center;
+      z-index: 999;
+    }
   </style>
 </head>
 <body>
@@ -90,16 +100,67 @@
         dan semoga kamu nggak lupa…<br>
         pacar kamu ini mungkin kadang slowrespon, tapi juga suka kamu. banget.<br><br>
         anyway aku ada surprise juga buat kamu.<br><br>
-        dari aku,<br>
-        yang tingginya dikit lebih unggul 12cm 🐢<br>
       </p>
+      <button onclick="showPopup()" style="
+        margin-top: 20px;
+        padding: 12px 25px;
+        font-size: 1em;
+        background-color: #ffc107;
+        color: #000;
+        border: none;
+        border-radius: 8px;
+        cursor: pointer;
+        box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+      ">
+        🎁 lihat surprise
+      </button>
     </div>
   </div>
 
+  <div id="popup">
+    <div style="
+      background: white;
+      padding: 30px;
+      border-radius: 15px;
+      text-align: center;
+      max-width: 90%;
+      max-height: 80%;
+      overflow-y: auto;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+    ">
+      <h2>🎉 surprise buat kamu!</h2>
+      <p style="font-size:1.1em; color:#444;">KAMU DAPETIN 600 ROBUX DARI AKUU</p>
+      <img src="https://upload.wikimedia.org/wikipedia/commons/c/c7/Robux_2019_Logo_gold.svg" alt="robux logo" style="width:120px; margin-top: 15px;">
+      <br><br>
+      <button onclick="closePopup()" style="
+        background-color: #ff69b4;
+        color: white;
+        border: none;
+        padding: 10px 20px;
+        border-radius: 8px;
+        cursor: pointer;
+      ">tutup</button>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
   <script>
     function showLetter() {
       document.querySelector('.open-button').style.display = 'none';
       document.getElementById('surat').style.display = 'block';
+      confetti({
+        particleCount: 100,
+        spread: 70,
+        origin: { y: 0.6 }
+      });
+    }
+
+    function showPopup() {
+      document.getElementById('popup').style.display = 'flex';
+    }
+
+    function closePopup() {
+      document.getElementById('popup').style.display = 'none';
     }
   </script>
 </body>

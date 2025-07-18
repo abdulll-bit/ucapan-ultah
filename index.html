@@ -79,6 +79,8 @@
   </style>
 </head>
 <body>
+  <audio id="trumpetSound" src="https://cdn.pixabay.com/audio/2022/03/15/audio_9b9d35165b.mp3"></audio>
+
   <div class="container">
     <button class="open-button" onclick="showLetter()">Buka Surat</button>
 
@@ -154,6 +156,7 @@
         spread: 70,
         origin: { y: 0.6 }
       });
+      document.getElementById("trumpetSound").play();
     }
 
     function showPopup() {

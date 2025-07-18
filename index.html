@@ -79,90 +79,118 @@
   </style>
 </head>
 <body>
-  <div class="container">
-    <button class="open-button" onclick="showLetter()">Buka Surat</button>
 
-    <div class="letter" id="surat">
-      <h1>Selamat Ulang Tahun, Pendekkk 😽🎉</h1>
-      <p>
-        hari ini ulang tahun kamu ya?<br><br>
-        selamat ulang tahun buat manusia kecil.<br>
-        semoga kamu nggak makin nyebelin… eh, maksudnya makin dewasa.<br>
-        walaupun aku tau kamu tetep bakal nyebelin. tapi yaudah, aku udah terlanjur jadian sama kamu.<br><br>
-        aku di sini nggak bisa kasih peluk.<br>
-        nggak bisa ngasih kue.<br>
-        yang bisa aku kasih cuma ucapan, doa, dan… perhatian yang sering terselubung kayak “ayo main”, ngirim vt padahal sebenernya artinya “aku kangen tapi gengsi ngomongnya karena belum terbiasa".<br><br>
-        jarak emang ngeselin.<br>
-        tapi kamu lebih ngeselin sih jujur aja apalagi kalo dikasih tau, batu bet kalo dikasih tau.<br><br>
-        tapi ya gitu...<br>
-        aku tetep kangen kamu banget.<br><br>
-        semoga tahun ini kamu bisa tahan sama semua hal — termasuk tahan sama aku yang kadang ngeselin tapi setia.<br>
-        dan jangan sering begadang mulu, udah dikasih tau malah nyinyir sama ngeyel.<br><br>
-        dan semoga kamu nggak lupa…<br>
-        pacar kamu ini mungkin kadang slowrespon, tapi juga suka kamu. banget.<br><br>
-        anyway aku ada surprise juga buat kamu.<br><br>
-      </p>
-      <button onclick="showPopup()" style="
-        margin-top: 20px;
-        padding: 12px 25px;
-        font-size: 1em;
-        background-color: #ffc107;
-        color: #000;
-        border: none;
-        border-radius: 8px;
-        cursor: pointer;
-        box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-      ">
-        🎁 lihat surprise
-      </button>
-    </div>
-  </div>
+<div class="container">
+  <button class="open-button" onclick="showLetter()">Buka Surat</button>
 
-  <div id="popup">
-    <div style="
-      background: white;
-      padding: 30px;
-      border-radius: 15px;
-      text-align: center;
-      max-width: 90%;
-      max-height: 80%;
-      overflow-y: auto;
-      box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+  <div class="letter" id="surat">
+    <h1>Selamat Ulang Tahun, Pendekkk 😽🎉</h1>
+    <p id="letterContent" style="white-space: pre-wrap; display: block; text-align: left;"></p>
+    <button id="surpriseBtn" onclick="showPopup()" style="
+      margin-top: 20px;
+      padding: 12px 25px;
+      font-size: 1em;
+      background-color: #ffc107;
+      color: #000;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+      display: none;
     ">
-      <h2>🎉 surprise buat kamu!</h2>
-      <p style="font-size:1.1em; color:#444;">KAMU DAPETIN 600 ROBUX DARI AKUU</p>
-      <img src="https://upload.wikimedia.org/wikipedia/commons/c/c7/Robux_2019_Logo_gold.svg" alt="robux logo" style="width:120px; margin-top: 15px;">
-      <br><br>
-      <button onclick="closePopup()" style="
-        background-color: #ff69b4;
-        color: white;
-        border: none;
-        padding: 10px 20px;
-        border-radius: 8px;
-        cursor: pointer;
-      ">tutup</button>
-    </div>
+      🎁 lihat surprise
+    </button>
   </div>
+</div>
 
-  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
-  <script>
-    function showLetter() {
-      document.querySelector('.open-button').style.display = 'none';
-      document.getElementById('surat').style.display = 'block';
-      confetti({
-        particleCount: 100,
-        spread: 70,
-        origin: { y: 0.6 }
-      });
-    }
+<div id="popup">
+  <div style="
+    background: white;
+    padding: 30px;
+    border-radius: 15px;
+    text-align: center;
+    max-width: 90%;
+    max-height: 80%;
+    overflow-y: auto;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+  ">
+    <h2>🎉 surprise buat kamu!</h2>
+    <p style="font-size:1.1em; color:#444;">KAMU DAPETIN 600 ROBUX DARI AKUU</p>
+    <img src="https://upload.wikimedia.org/wikipedia/commons/c/c7/Robux_2019_Logo_gold.svg" alt="robux logo" style="width:120px; margin-top: 15px;">
+    <br><br>
+    <button onclick="closePopup()" style="
+      background-color: #ff69b4;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 8px;
+      cursor: pointer;
+    ">tutup</button>
+  </div>
+</div>
 
-    function showPopup() {
-      document.getElementById('popup').style.display = 'flex';
-    }
+<script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+<script>
+  function showLetter() {
+    document.querySelector('.open-button').style.display = 'none';
+    const letter = document.getElementById('surat');
+    letter.style.display = 'block';
 
-    function closePopup() {
-      document.getElementById('popup').style.display = 'none';
+    const paragraph = document.getElementById('letterContent');
+    const text = `hari ini ulang tahun kamu ya?
+
+selamat ulang tahun buat manusia kecil.
+semoga kamu nggak makin nyebelin… eh, maksudnya makin dewasa.
+walaupun aku tau kamu tetep bakal nyebelin. tapi yaudah, aku udah terlanjur jadian sama kamu.
+
+aku di sini nggak bisa kasih peluk.
+gak bisa ngasih kue.
+yang bisa aku kasih cuma ucapan, doa, dan… perhatian yang sering terselubung kayak “ayo main”, ngirim vt padahal sebenernya artinya “aku kangen tapi gengsi ngomongnya karena belum terbiasa".
+
+jarak emang ngeselin.
+tapi kamu lebih ngeselin sih jujur aja apalagi kalo dikasih tau, batu bet kalo dikasih tau.
+
+tapi ya gitu...
+aku tetep kangen kamu banget.
+
+semoga tahun ini kamu bisa tahan sama semua hal — termasuk tahan sama aku yang kadang ngeselin tapi setia.
+dan jangan sering begadang mulu, udah dikasih tau malah nyinyir sama ngeyel.
+
+dan semoga kamu nggak lupa…
+pacar kamu ini mungkin kadang slowrespon, tapi juga suka kamu. banget.
+
+anyway aku ada surprise juga buat kamu.`;
+    paragraph.innerHTML = '';
+
+    let i = 0;
+    function typeWriter() {
+      if (i < text.length) {
+        if (text.charAt(i) === '\n') {
+          paragraph.innerHTML += '<br>';
+        } else {
+          paragraph.innerHTML += text.charAt(i);
+        }
+        i++;
+        setTimeout(typeWriter, 50);
+      } else {
+        document.getElementById('surpriseBtn').style.display = 'inline-block';
+      }
     }
-  </script>
+    typeWriter();
+  }
+
+  function showPopup() {
+    confetti({
+      particleCount: 100,
+      spread: 70,
+      origin: { y: 0.6 }
+    });
+    document.getElementById('popup').style.display = 'flex';
+  }
+
+  function closePopup() {
+    document.getElementById('popup').style.display = 'none';
+  }
+</script>
 </body>
 </html>

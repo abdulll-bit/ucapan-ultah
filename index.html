@@ -76,6 +76,14 @@
       align-items: center;
       z-index: 999;
     }
+      #popup > div {
+      animation: pulse 1.2s ease-in-out infinite alternate;
+    }
+
+    @keyframes pulse {
+      from { box-shadow: 0 0 15px rgba(255,105,180,0.3); }
+      to { box-shadow: 0 0 30px rgba(255,105,180,0.6); }
+    }
   </style>
 </head>
 <body>
@@ -88,17 +96,24 @@
     <p id="letterContent" style="white-space: pre-wrap; display: block; text-align: left;"></p>
     <button id="surpriseBtn" onclick="showPopup()" style="
       margin-top: 20px;
-      padding: 12px 25px;
-      font-size: 1em;
-      background-color: #ffc107;
-      color: #000;
+      padding: 15px 35px;
+      font-size: 1.1em;
+      background: linear-gradient(135deg, #ffdd00, #ff69b4);
+      color: white;
+      font-weight: bold;
+      letter-spacing: 0.5px;
       border: none;
-      border-radius: 8px;
+      border-radius: 50px;
       cursor: pointer;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+      box-shadow: 0 8px 20px rgba(255, 105, 180, 0.3);
       display: none;
-    ">
-      🎁 lihat surprise
+      opacity: 0;
+      transform: scale(0.9);
+      transition: opacity 0.6s ease, transform 0.6s ease, box-shadow 0.3s ease;
+    "
+    onmouseover="this.style.boxShadow='0 10px 25px rgba(255, 105, 180, 0.5)'"
+    onmouseout="this.style.boxShadow='0 8px 20px rgba(255, 105, 180, 0.3)'">
+      🎁 Klik Untuk Melihat Hadiah
     </button>
   </div>
 </div>
@@ -114,8 +129,8 @@
     overflow-y: auto;
     box-shadow: 0 10px 30px rgba(0,0,0,0.2);
   ">
-    <h2>🎉 surprise buat kamu!</h2>
-    <p style="font-size:1.1em; color:#444;">KAMU DAPETIN 600 ROBUX DARI AKUU</p>
+    <h2>🎉 HADIAH BUAT KAMU!</h2>
+    <p style="font-size:1.1em; color:#444;">KAMU DAPETIN 600 ROBUX </p>
     <img src="https://upload.wikimedia.org/wikipedia/commons/c/c7/Robux_2019_Logo_gold.svg" alt="robux logo" style="width:120px; margin-top: 15px;">
     <br><br>
     <button onclick="closePopup()" style="
@@ -173,7 +188,12 @@ anyway aku ada surprise juga buat kamu.`;
         i++;
         setTimeout(typeWriter, 50);
       } else {
-        document.getElementById('surpriseBtn').style.display = 'inline-block';
+        const surpriseBtn = document.getElementById('surpriseBtn');
+        surpriseBtn.style.display = 'inline-block';
+        setTimeout(() => {
+          surpriseBtn.style.opacity = '1';
+          surpriseBtn.style.transform = 'scale(1)';
+        }, 10);
       }
     }
     typeWriter();

@@ -19,12 +19,10 @@
       align-items: center;
       padding: 40px 20px;
     }
-
     .container {
       text-align: center;
       padding: 20px;
     }
-
     .open-button {
       padding: 15px 30px;
       font-size: 1.2em;
@@ -36,11 +34,9 @@
       box-shadow: 0 5px 15px rgba(0,0,0,0.1);
       transition: transform 0.2s;
     }
-
     .open-button:hover {
       transform: scale(1.05);
     }
-
     .letter {
       display: none;
       max-width: 600px;
@@ -51,23 +47,19 @@
       animation: fadeIn 1s ease forwards;
       margin-top: 20px;
     }
-
     @keyframes fadeIn {
       from { opacity: 0; transform: translateY(30px); }
       to   { opacity: 1; transform: translateY(0); }
     }
-
     h1 {
       color: #ff69b4;
       margin-bottom: 15px;
     }
-
     p {
       font-size: 1.1em;
       line-height: 1.6em;
       color: #444;
     }
-
     #popup {
       display: none;
       position: fixed;
@@ -77,11 +69,9 @@
       align-items: center;
       z-index: 999;
     }
-
     #popup > div {
       animation: pulse 1.2s ease-in-out infinite alternate;
     }
-
     @keyframes pulse {
       from { box-shadow: 0 0 15px rgba(255,105,180,0.3); }
       to { box-shadow: 0 0 30px rgba(255,105,180,0.6); }
@@ -89,6 +79,11 @@
   </style>
 </head>
 <body>
+
+<audio id="bgm" autoplay loop style="display: none">
+  <source src="Happy%20Birthday%20(Piano%20Version).mp3" type="audio/mpeg">
+  Browser tidak mendukung pemutar audio.
+</audio>
 
 <div class="container">
   <button class="open-button" onclick="showLetter()">Buka Surat</button>
@@ -152,6 +147,8 @@
     document.querySelector('.open-button').style.display = 'none';
     const letter = document.getElementById('surat');
     letter.style.display = 'block';
+
+    document.getElementById('bgm').play();
 
     const paragraph = document.getElementById('letterContent');
     const text = `hari ini ulang tahun kamu ya?
@@ -221,7 +218,6 @@ anyway aku ada surprise juga buat kamu.`;
     });
     document.getElementById('popup').style.display = 'flex';
 
-    // tambahkan footer lucu hanya jika belum ada
     if (!document.getElementById('closingMessage')) {
       const closing = document.createElement('p');
       closing.id = 'closingMessage';
@@ -239,8 +235,10 @@ anyway aku ada surprise juga buat kamu.`;
     document.getElementById('popup').style.display = 'none';
   }
 </script>
+
 <footer style="margin-top: 40px; font-size: 0.85em; color: #888; text-align: center; font-family: 'Indie Flower', cursive;">
-  dibuat dengan penuh <span style="color:#ff69b4;">gengsi dan cinta</span> oleh pacarmu yang paling sabar 😎
+  dibuat dengan penuh <span style="color:#ff69b4;">gengsi dan cinta</span> oleh pacarmu yang paling sabar 😎 | kamu jangan kebanyakan gaya ya 😋
 </footer>
+
 </body>
 </html>

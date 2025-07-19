@@ -188,6 +188,7 @@ anyway aku ada surprise juga buat kamu.`;
           paragraph.innerHTML += text.charAt(i);
         }
         i++;
+        paragraph.scrollIntoView({ behavior: 'smooth', block: 'end' });
         setTimeout(typeWriter, 50);
       } else {
         const surpriseBtn = document.getElementById('surpriseBtn');
@@ -202,12 +203,36 @@ anyway aku ada surprise juga buat kamu.`;
   }
 
   function showPopup() {
+    const hadiahPopup = document.querySelector('#popup > div');
+    hadiahPopup.style.transform = 'rotate(0deg)';
+    hadiahPopup.style.transition = 'transform 0.4s ease';
+    hadiahPopup.style.transform = 'rotate(5deg)';
+    setTimeout(() => {
+      hadiahPopup.style.transform = 'rotate(-5deg)';
+    }, 150);
+    setTimeout(() => {
+      hadiahPopup.style.transform = 'rotate(0deg)';
+    }, 300);
+
     confetti({
       particleCount: 100,
       spread: 70,
       origin: { y: 0.6 }
     });
     document.getElementById('popup').style.display = 'flex';
+
+    // tambahkan footer lucu hanya jika belum ada
+    if (!document.getElementById('closingMessage')) {
+      const closing = document.createElement('p');
+      closing.id = 'closingMessage';
+      closing.innerText = 'makasih udah buka suratnya. kamu emang paling lucu dan paling ngeselin yang aku suka. 💌';
+      closing.style.marginTop = '20px';
+      closing.style.color = '#888';
+      closing.style.fontSize = '1em';
+      closing.style.fontStyle = 'italic';
+      closing.style.fontFamily = "'Indie Flower', cursive";
+      hadiahPopup.appendChild(closing);
+    }
   }
 
   function closePopup() {

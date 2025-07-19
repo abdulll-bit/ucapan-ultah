@@ -44,12 +44,18 @@
       padding: 30px;
       border-radius: 15px;
       box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-      animation: fadeIn 1s ease forwards;
       margin-top: 20px;
+      transform: rotateY(90deg);
+      transform-style: preserve-3d;
+      backface-visibility: hidden;
     }
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(30px); }
-      to   { opacity: 1; transform: translateY(0); }
+    .letter.show {
+      display: block;
+      animation: openLetter 0.7s forwards ease;
+    }
+    @keyframes openLetter {
+      from { transform: rotateY(90deg); opacity: 0; }
+      to { transform: rotateY(0); opacity: 1; }
     }
     h1 {
       color: #ff69b4;
@@ -95,12 +101,12 @@
       }
     }
     @media (max-width: 400px) {
-    #popup > div {
-      width: 90%;
-      padding: 20px;
+      #popup > div {
+        width: 90%;
+        padding: 20px;
+      }
     }
-  }
-</style>
+  </style>
 </head>
 <body>
 
@@ -170,7 +176,7 @@
   function showLetter() {
     document.querySelector('.open-button').style.display = 'none';
     const letter = document.getElementById('surat');
-    letter.style.display = 'block';
+    letter.classList.add('show');
     document.getElementById('bgm').play();
     startFloatingHearts();
 
@@ -188,14 +194,14 @@ yang bisa aku kasih cuma ucapan, doa, dan… perhatian yang sering terselubung k
 jarak emang ngeselin.
 tapi kamu lebih ngeselin
 
-tapi ya gitu...
+ tapi ya gitu...
 aku tetep sayang kamu banget.
 
 semoga tahun ini kamu bisa tahan sama semua hal — termasuk tahan sama aku yang kadang ngeselin tapi setia.
 dan jangan sering begadang mulu, ntar kecapean badanmu
 
 dan semoga kamu nggak lupa…
-pacar kamu ini mungkin kadang slowrespon, tapi juga sayang kamu. banget.
+pacar kamu ini mungkin kadang cuek dan slowrespon, tapi juga sayang kamu. banget.
 
 anyway aku ada surprise juga buat kamu.`;
     paragraph.innerHTML = '';
@@ -274,7 +280,7 @@ anyway aku ada surprise juga buat kamu.`;
 </script>
 
 <footer style="margin-top: 40px; font-size: 0.85em; color: #888; text-align: center; font-family: 'Indie Flower', cursive;">
-  dibuat dengan penuh <span style="color:#ff69b4;">effort dan cinta</span> sama pacarmu yang paling sabar 😎
+  dibuat dengan penuh <span style="color:#ff69b4;">effort dan sepenuh hati</span> sama pacarmu yang paling sabar 😎
 </footer>
 
 </body>
